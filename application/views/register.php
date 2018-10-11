@@ -27,11 +27,11 @@
 
 			<div class="form-group">
 		        <input class="form-control" name="firstname" placeholder="First name" 
-					 id="firstname" type="text">
+					 id="firstname" type="text"  value="<?php echo set_value('firstname');?>" />
 		        <?php echo form_error('firstname', '<div class="alert alert-danger">', '</div>'); ?>
 		    </div>
 			<div class="form-group">
-		        <input class="form-control" name="lastname" id="lastname" placeholder="Last name" type="text">
+		        <input class="form-control" name="lastname" id="lastname" placeholder="Last name" type="text" value="<?php echo set_value('lastname');?>" />
 		       <?php echo form_error('lastname', '<div class="alert alert-danger">', '</div>'); ?>
 
 		    </div>
@@ -39,22 +39,22 @@
 
 
 		      <div class="form-group">
-		        <input class="form-control" name="username" placeholder="Username" id="username" type="text">
+		        <input class="form-control" name="username" placeholder="Username" id="username" type="text" value="<?php echo set_value('username');?>" />
 		        <?php echo form_error('username', '<div class="alert alert-danger">', '</div>'); ?>
 		      </div>
 		      <div class="form-group">
-		        <input class="form-control" name="password" placeholder="Password"id="password" type="password">
+		        <input class="form-control" name="password" placeholder="Password"id="password" type="password" />
 		        <?php echo form_error('password', '<div class="alert alert-danger">', '</div>'); ?>
 
 		      </div>
 		      <div class="form-group">
-		        <input class="form-control" name="confirm" placeholder="Confirm Password"  id="confirm" type="password">
+		        <input class="form-control" name="confirm" placeholder="Confirm Password"  id="confirm" type="password" />
 		        <?php echo form_error('confirm', '<div class="alert alert-danger">', '</div>'); ?>
 
 		      </div>
 
 		      <div class="form-group">
-		        <input class="form-control" name="email" placeholder="Email" id="email" type="text">
+		        <input class="form-control" name="email" placeholder="Email" id="email" type="text" value="<?php echo set_value('email');?>"/>
 		        <?php echo form_error('email', '<div class="alert alert-danger">', '</div>'); ?>
 
 		      </div>

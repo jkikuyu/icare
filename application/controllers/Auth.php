@@ -51,17 +51,23 @@
 
 
 					if($this->form_validation->run()==TRUE){
-						echo "form validated";		
-	/*					$data = array(
+						$data = array(
+							'fname'=>$_POST['firstname'],
+							'lname'=>$_POST['lastname'],
 							'username' =>$_POST['username'],
 							'email' =>$_POST['email'],
-							'datecreated' =>date('y-m-d')
+							'password'=>$_POST['password'],
+							'account_locked'=>0, 
+							'attempts'=>0, 
+							'lastlogin'=>date("Y-m-d H:i:s"), 
+							'createdby'=>0,
+							'regdate' =>date("Y-m-d H:i:s")
 						);
 				
 						$this->db->insert('user',$data );
 						$this->session->set_flashdata("success",'your account has been registered');
 
-						redirect('/auth/register','refresh');*/
+						redirect('/auth/login','refresh');
 					}
 
 
