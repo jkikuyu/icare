@@ -7,12 +7,13 @@
 					$this->form_validation->set_rules('password','Password','required[min_length=5]');
 					if($this->form_validation->run()==TRUE){
 						$username = $_SESSION['username'];
-						$password = md5($_SESSION['Password']);
+						$password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
 						$account_locked = FALSE;
 						$attempts = 3;
 						$this->db->select('username, password, account_locked', 'attempts');
 						$this->db->from('user');
-						$this->db->where(array('username'=>$username,'password'=>$password,'account_locked'=>$account_locked, 'attemps'=>$attempts));
+						$this->db->where(array('username'=>$username,'password'=>$password,'account_locked'=>$account_locked);
+						$this->db->where(array('attempts','=<','3'));
 						$query= $this->db->get();
 						$user=$query->row();
 						if ($user->email){
@@ -45,18 +46,19 @@
 					$this->form_validation->set_rules('firstname','First Name','required');
 					$this->form_validation->set_rules('lastname','Last Name','required');
 					$this->form_validation->set_rules('username','Username','required');
-					$this->form_validation->set_rules('password','Password','required');
-					$this->form_validation->set_rules('confirm','Confirm Password','required');
+					$this->form_validation->set_rules('password','Password','required|min_length[8]');
+					$this->form_validation->set_rules('confirm','Confirm Password','required|min_length[8]|maatches[password]');
 					$this->form_validation->set_rules('email','Email','required');
 
 
 					if($this->form_validation->run()==TRUE){
+						$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 						$data = array(
 							'fname'=>$_POST['firstname'],
 							'lname'=>$_POST['lastname'],
 							'username' =>$_POST['username'],
 							'email' =>$_POST['email'],
-							'password'=>$_POST['password'],
+							'password'=>$password,
 							'account_locked'=>0, 
 							'attempts'=>0, 
 							'lastlogin'=>date("Y-m-d H:i:s"), 
