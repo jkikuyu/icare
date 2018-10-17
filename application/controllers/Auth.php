@@ -67,11 +67,13 @@
 						);
 				
 						$this->db->insert('user',$data );
-						$this->session->set_flashdata("success","your account has been registered");
-					$this->session->set_flashdata('flash_data ', 'Username or password is wrong!');
+						//$this->session->set_flashdata("success","your account has been registered");
+						$this->session->set_userdata("success","your account has been registered");
+						$this->session->mark_as_flash('success');
+						//$this->session->set_flashdata('flash_data ', 'Username or password is wrong!');
+						header('Refresh:3; url= '. base_url().'auth/login');
 
-						redirect('/auth/registration','refresh');
-						//header('refresh:5;url=/auth/login');
+						//redirect('/auth/registration','refresh');
 					}
 
 
