@@ -9,6 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
+ 	<link href="<?php echo base_url();?>assets/css/respond.min.css" rel="stylesheet">
+ 	<link href="<?php echo base_url();?>assets/css/html5shiv.min.js" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,6 +24,12 @@
     <div class="col-lg-5 col-lg-offset-2">
 	    <h1>Registration Page</h1>
 		<p>Fill in the details</p>
+		<?php if(isset($_SESSION['success'])){?>
+			<div class= "alert alert-success"> <?php echo $_SESSION['success'];?></div>
+		<?php
+		}
+		?>
+		
 
 		 <form action "" method="POST">
 

@@ -12,8 +12,7 @@
 						$attempts = 3;
 						$this->db->select('username, password, account_locked', 'attempts');
 						$this->db->from('user');
-						$this->db->where(array('username'=>$username,'password'=>$password,'account_locked'=>$account_locked);
-						$this->db->where(array('attempts','=<','3'));
+						$this->db->where(array('username'=>$username,'password'=>$password,'account_locked'=>$account_locked,array('attempts','=<','3')));
 						$query= $this->db->get();
 						$user=$query->row();
 						if ($user->email){
@@ -28,6 +27,7 @@
 						else{
 							$this->session->set_flashdata("error",'username or password  does not exist');
 							redirect('/auth/login','refresh');
+							header("Refresh: 5; Location:/auth/login");
 
 						}
 
@@ -47,7 +47,7 @@
 					$this->form_validation->set_rules('lastname','Last Name','required');
 					$this->form_validation->set_rules('username','Username','required');
 					$this->form_validation->set_rules('password','Password','required|min_length[8]');
-					$this->form_validation->set_rules('confirm','Confirm Password','required|min_length[8]|maatches[password]');
+					$this->form_validation->set_rules('confirm','Confirm Password','required|min_length[8]|matches[password]');
 					$this->form_validation->set_rules('email','Email','required');
 
 
@@ -67,9 +67,11 @@
 						);
 				
 						$this->db->insert('user',$data );
-						$this->session->set_flashdata("success",'your account has been registered');
+						$this->session->set_flashdata("success","your account has been registered");
+					$this->session->set_flashdata('flash_data ', 'Username or password is wrong!');
 
-						redirect('/auth/login','refresh');
+						redirect('/auth/registration','refresh');
+						//header('refresh:5;url=/auth/login');
 					}
 
 
