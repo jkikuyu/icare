@@ -18,27 +18,50 @@
     <![endif]-->
   </head>
   <body>
-    <div class="col-lg-5 col-lg-offset-2">
-      <h4>Login</h4>
-    <p>Fill in the details</p>
-    <?php echo validation_errors('<div class="alert alert-danger">','</div');?>
 
-    <form action "" method="POST">
+    <div class="container"> 
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
 
-          <div class="form-group">
-            <label for="username">username:</label>
-            <input class="form-control" name="username" id="username" type="text">
-          </div>
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input class="form-control" name="password" id="password" type="text">
+      <div class="panel panel-info" >
+             <?php echo validation_errors('<div class="alert alert-danger">','</div');?>
+
+              <div class="panel-heading">
+                  <div class="panel-title">Sign In</div>
+                  <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+              </div>     
+
+                <div style="padding-top:30px" class="panel-body" >
+
+                  <form id="loginform" role="form" action="" method="POST">
+
+                    <div class="form-group">
+                      <label for="username">username:</label>
+                      <input class="form-control" name="username" id="username" type="text">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="password">Password:</label>
+                      <input class="form-control" name="password" id="password" type="password">
+                    </div>
+
+                    <div class="form-group" style="margin-top:10px">
+                      <a id="btn-login" class='btn btn-primary' name="login" role="button">Login</a>
+                    </div>
+                    <div classs="form-group">
+                        <div style="border-top: 1px solid#888; padding-top:10px; font-size:85%">
+                        
+                          Don't have an account! <a onclick="document.getElementById('loginform').submit();">Sign up here</a>
+
+                      </div>
+                    </div>
+                  </form>
+
+                  </div>
+              </div>
+
+            </div>
           </div>
 
-          <div>
-            <button class="btn btn-primary" name="register">Login</button>
-          </div>
-    </form>
-    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
