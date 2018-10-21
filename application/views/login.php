@@ -45,12 +45,12 @@
                     </div>
 
                     <div class="form-group" style="margin-top:10px">
-                      <a id="btn-login" class='btn btn-primary' name="login" role="button">Login</a>
+                      <a id="btn-login" class='btn btn-primary' name="login" onclick="document.getElementById('loginform').submit();" role="button">Login</a>
                     </div>
                     <div classs="form-group">
                         <div style="border-top: 1px solid#888; padding-top:10px; font-size:85%">
                         
-                          Don't have an account! <a onclick="document.getElementById('loginform').submit();">Sign up here</a>
+                          Don't have an account! <a href='#' onclick="document.getElementById('loginform').submit();">Sign up here</a>
 
                       </div>
                     </div>

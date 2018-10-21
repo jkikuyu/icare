@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -20,75 +20,88 @@
     <![endif]-->
   </head>
   <body>
+	<div class="container"> 
+	    <div id="registerbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
 
-    <div class="col-lg-5 col-lg-offset-2">
-	    <h1>Registration Page</h1>
-		<p>Fill in the details</p>
-		<?php if(isset($_SESSION['success'])){?>
-			<div class= "alert alert-success"> <?php echo $_SESSION['success'];?></div>
-		<?php
-		}
+			<?php if(isset($_SESSION['success'])){?>
+				<div class= "alert alert-success"> <?php echo $_SESSION['success'];?></div>
+			<?php
+			}
 		?>
-		
 
-		 <form action "" method="POST">
+      <div class="panel panel-info" >
+         <?php //echo validation_errors('<div class="alert alert-danger">','</div');?>
 
-			<div class="form-group">
-		        <input class="form-control" name="firstname" placeholder="First name" 
-					 id="firstname" type="text"  value="<?php echo set_value('firstname');?>" />
-		        <?php echo form_error('firstname', '<div class="alert alert-danger">', '</div>'); ?>
-		    </div>
-			<div class="form-group">
-		        <input class="form-control" name="lastname" id="lastname" placeholder="Last name" type="text" value="<?php echo set_value('lastname');?>" />
-		       <?php echo form_error('lastname', '<div class="alert alert-danger">', '</div>'); ?>
+          <div class="panel-heading">
+              <div class="panel-title">New User?</div>
+			<!--               <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+ -->          </div>     
 
-		    </div>
+            <div style="padding-top:30px" class="panel-body" >
+			
+				<form id="registerform" role="form" action="" method="POST">
 
 
+					<div class="form-group">
+					    <input class="form-control" name="firstname" placeholder="First name" 
+							 id="firstname" type="text"  value="<?php echo set_value('firstname');?>" />
+					    <?php echo form_error('firstname', '<div class="form-control alert alert-danger">', '</div>'); ?>
+					</div>
+					<div class="form-group">
+					    <input class="form-control" name="lastname" id="lastname" placeholder="Last name" type="text" value="<?php echo set_value('lastname');?>" />
+					   <?php echo form_error('lastname', '<div class="form-control alert alert-danger">', '</div>'); ?>
 
-		      <div class="form-group">
-		        <input class="form-control" name="username" placeholder="Username" id="username" type="text" value="<?php echo set_value('username');?>" />
-		        <?php echo form_error('username', '<div class="alert alert-danger">', '</div>'); ?>
-		      </div>
-		      <div class="form-group">
-		        <input class="form-control" name="password" placeholder="Password"id="password" type="password" />
-		        <?php echo form_error('password', '<div class="alert alert-danger">', '</div>'); ?>
+					</div>
 
-		      </div>
-		      <div class="form-group">
-		        <input class="form-control" name="confirm" placeholder="Confirm Password"  id="confirm" type="password" />
-		        <?php echo form_error('confirm', '<div class="alert alert-danger">', '</div>'); ?>
 
-		      </div>
 
-		      <div class="form-group">
-		        <input class="form-control" name="email" placeholder="Email" id="email" type="text" value="<?php echo set_value('email');?>"/>
-		        <?php echo form_error('email', '<div class="alert alert-danger">', '</div>'); ?>
+					<div class="form-group">
+						<input class="form-control" name="username" placeholder="Username" id="username" type="text" value="<?php echo set_value('username');?>" />
+						<?php echo form_error('username', '<div class="form-control alert alert-danger">', '</div>'); ?>
+						</div>
+					<div class="form-group">
+						<input class="form-control" name="password" placeholder="Password"id="password" type="password" />
+						<?php echo form_error('password', '<div class="form-control alert alert-danger">', '</div>'); ?>
 
-		      </div>
-<!-- 		      <div class="form-group">
-		        <label for="dob">Date of Birth:</label>
-		        <input class="form-control" name="dob" id="dob">
-		      </div>
-		      <div class="form-group">
-		        <label for="gender" >Gender:</label>
-		        <select class="form-control" name="gender" id="gender">
-		          <option value="M">Male</option>
-		          <option value="F">Female</option>
-		          </select>
+					</div>
+					<div class="form-group">
+						<input class="form-control" name="confirm" placeholder="Confirm Password"  id="confirm" type="password" />
+						<?php echo form_error('confirm', '<div class="form-control alert alert-danger">', '</div>'); ?>
 
-		      </div>
+					</div>
 
-		      <div class="form-group">
-		        <label for="phone">Phone:</label>
-		        <input class="form-control" name="phone" id="phone">
-		      </div>
- -->
-		      <div>
-		        <button class="btn btn-primary" name="register">Register</button>
-		      </div>
-		</form>
-    </div>
+					<div class="form-group">
+						<input class="form-control" name="email" placeholder="Email" id="email" type="text" value="<?php echo set_value('email');?>"/>
+						<?php echo form_error('email', '<div class="form-control alert alert-danger">', '</div>'); ?>
+
+					</div>
+	<!-- 		      <div class="form-group">
+			        <label for="dob">Date of Birth:</label>
+			        <input class="form-control" name="dob" id="dob">
+			      </div>
+			      <div class="form-group">
+			        <label for="gender" >Gender:</label>
+			        <select class="form-control" name="gender" id="gender">
+			          <option value="M">Male</option>
+			          <option value="F">Female</option>
+			          </select>
+
+			      </div>
+
+			      <div class="form-group">
+			        <label for="phone">Phone:</label>
+			        <input class="form-control" name="phone" id="phone">
+			      </div>
+	 -->
+					<div>
+						<button class="btn btn-primary" name="register">Register</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+		</div>
+	</div>
     
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -1,38 +1,49 @@
 <?php
+
 	class Auth extends CI_Controller{
 
 			public function login(){
-				$this->load->view('login');
-				$this->form_validation->set_rules('username','username','required');
-				$this->form_validation->set_rules('password','Password','required[min_length=5]');
+				
+				$this->form_validation->set_rules('username','Username','required');
+				$this->form_validation->set_rules('password','Password','required[min_length=8]');
 				if($this->form_validation->run()==TRUE){
-					$username = $_SESSION['username'];
-					$password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
+					$username = $_POST['username'];
+					$password = $_POST['password'];
 					$account_locked = FALSE;
 					$attempts = 3;
-					$this->db->select('username, password, account_locked', 'attempts');
+					$this->db->select('userid, username, password, account_locked', 'attempts');
 					$this->db->from('user');
-					$this->db->where(array('username'=>$username,'password'=>$password,'account_locked'=>$account_locked,array('attempts','=<','3')));
+					$this->db->where(array('username'=>$username,
+											'account_locked'=>$account_locked
+											 ),array('attempts','=<','3'));
 					$query= $this->db->get();
-					$user=$query->row();
-					if ($user->email){
+					if ($query->num_rows()>1){
+						$row = $query->result();
+						$row->attempts;
+						if(password_verify($password,$row[0]->password)){
+							$_SESSION['username'] = $username;
+							$_SESSION['profile_data']=$row;
+							$_SESSION['user_logged'] = TRUE; 
+							$this->session->set_flashdata("success",'You are logged in');
+							redirect('/home/dash','refresh');
+						}
+						else if($row[0]->attempts < 4){
+							$this->session->set_flashdata("error",'username or password  does not exist');
+							$attempts = $row->attempts + 1;
+							$this->db->set('attempts', $attempts, FALSE);
+							$this->db->where('id', 2);
+							$this->db->update('mytable'); 
+							redirect('/auth/login','refresh');
+							header("Refresh: 5; Location:/auth/login");
 
-						$_SESSION['username'] = $user->username;
-						$_SESSION['user_logged'] = TRUE; 
-
-						$this->session->set_flashdata("success",'You are logged in');
-						redirect('/auth/dashboard','refresh');
-
+						}
 					}
-					else{
-						$this->session->set_flashdata("error",'username or password  does not exist');
-						redirect('/auth/login','refresh');
-						header("Refresh: 5; Location:/auth/login");
 
-					}
-
+				
 
 				}
+				$this->load->view('login');
+
 
 			}
 			public function logout(){

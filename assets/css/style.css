@@ -1,0 +1,26 @@
+.navbar-inverse {
+  background: #EF4A23;
+  color: #ffffff;
+}
+a {
+	color:#EF4A23;
+}
+a:hover {
+	color: #FAA92F;
+}
+.form-control:focus {
+	border-color: #EF4A23;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+} 
+.has-error .form-control:focus{
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.bg-blue, .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  background-color: #EF4A23;
+  border-color: #EF4A23;
+  color: #ffffff;
+}
+
+	
