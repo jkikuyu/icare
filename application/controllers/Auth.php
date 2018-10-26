@@ -1,5 +1,8 @@
 <?php
-
+	/**
+	 * customize logs 
+	 *https://stackoverflow.com/*questions/15858372/codeigniter-try-catch-is-not-working-in-model-class
+	**/
 	class Auth extends CI_Controller{
 
 			public function login(){
@@ -42,6 +45,7 @@
 				
 
 				}
+				echo var_dump($_POST);
 				$this->load->view('login');
 
 
@@ -61,7 +65,7 @@
 					$this->form_validation->set_rules('confirm','Confirm Password','required|min_length[8]|matches[password]');
 					$this->form_validation->set_rules('email','Email','required');
 
-
+					$success = FALSE;
 					if($this->form_validation->run()==TRUE){
 						$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 						$data = array(
@@ -76,13 +80,31 @@
 							'createdby'=>0,
 							'regdate' =>date("Y-m-d H:i:s")
 						);
-				
-						$this->db->insert('user',$data );
-						//$this->session->set_flashdata("success","your account has been registered");
-						$this->session->set_userdata("success","your account has been registered");
-						$this->session->mark_as_flash('success');
+						try{
+							if($this->db->insert('user',$data )){
+							//$this->session->set_flashdata("success","your account has been registered");
+								$success = TRUE;
+							}
+						}
+						catch(Exception $e){
+							log_message('error', $e->getMessage());
+
+						}
 						//$this->session->set_flashdata('flash_data ', 'Username or password is wrong!');
-						header('Refresh:3; url= '. base_url().'auth/login');
+						if ($success){
+							$this->session->set_userdata("success","your account has been registered");
+							$this->session->mark_as_flash('success');
+							header('Refresh:3; url= '. base_url().'auth/login');
+
+						}
+						else{
+
+							$this->session->set_userdata("failed","User cannot be created at the moment! Contact the Administrator");
+							$this->session->mark_as_flash('failed');
+						}
+
+
+
 
 						//redirect('/auth/registration','refresh');
 					}

@@ -4,7 +4,7 @@ class Home extends CI_Controller{
 
 	public function __construct(){
 		parent::__construct();
-		//$this->load->helper('url');
+		$this->load->helper('url');
         $this->load->helper('form');
 
         $this->db = $this->load->database('default', true);
