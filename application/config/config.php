@@ -9,6 +9,7 @@ function icare_error_handler($errno, $errstr, $errfile, $errline){
     throw new ErrorException( $errstr, $errno, 0, $errfile, $errline );
 }
 set_error_handler("icare_error_handler");
+
 function icare_exception_handler($exception){
     echo '<pre>';
     print_r($exception);
@@ -31,6 +32,7 @@ function icare_fatal_handler()
         header( "HTTP/1.0 500 Internal Server Error" );
     }
 }
+
 register_shutdown_function("icare_fatal_handler");
 function icare_assert_handler($file, $line, $code)
 {
@@ -64,7 +66,7 @@ assert_options(ASSERT_CALLBACK, 'icare_assert_handler');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/icare';
+$config['base_url'] = 'http://localhost/icare/';
 
 /*
 |--------------------------------------------------------------------------

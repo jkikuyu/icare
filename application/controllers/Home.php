@@ -4,9 +4,9 @@ class Home extends CI_Controller{
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->helper('url');
+/*		$this->load->helper('url');
         $this->load->helper('form');
-
+*/
         $this->db = $this->load->database('default', true);
 
         $this->load->model('home_model');
@@ -29,10 +29,13 @@ class Home extends CI_Controller{
         
         $data['breadcrumb']  = $breadcrumb;
         $data['page_title']  = $page_title;
-        $this->load->view('templates/header');
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/body_header', $data);
-        $this->load->view('home_view', $data);
+        $this->load->view('templates/header_patient');
+        $this->load->view('templates/navigation_patient');
+        $this->load->view('templates/body_header_patient', $data);
+
+        $this->load->view('patient',$data);
+        $this->load->view('templates/modal');
+
         $this->load->view('templates/footer');
         //$this->load->view('dashboard');
 
@@ -41,12 +44,14 @@ class Home extends CI_Controller{
 
 	}
     public function profile() {
-    	echo 'here';
 
 	    if($_POST) {
-/*	        $profile_update  = $_POST;
-	        var_dump( $profile_data);
-*/	        //$this->console_log_array($profile_update);
+        $data['breadcrumb']  = $breadcrumb;
+        $data['page_title']  = $page_title;
+
+	        $profile_update  = $_POST;
+	        //var_dump( $profile_data);
+	        //$this->console_log_array($profile_update);
 
 	        /**
 	        *Get the profile details from the details stored in  the session array.
@@ -61,7 +66,7 @@ class Home extends CI_Controller{
 	            **/
 	       //     $res = get_object_vars($existing_profile);
 	     //   }
-/*	        $result = array_diff($profile_update, $res);
+	        $result = array_diff($profile_update, $res);
 
 	        //$this->console_log($result);
 
@@ -81,7 +86,7 @@ class Home extends CI_Controller{
                     $data['success_message']     = "The profile was changed successfully"; 
                 }
             }  
-*/
+
 
 		}
 	    $data['profile_data']   = $_SESSION['profile_data'];

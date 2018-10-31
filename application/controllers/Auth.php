@@ -5,8 +5,25 @@
 	**/
 	class Auth extends CI_Controller{
 
+			public function __construct(){
+				parent::__construct();
+
+
+			}
+			public function index(){
+				$this->load->helper(array('form', 'url'));
+				$this->load->library('form_validation');
+				if($_POST) {
+				  	$this->login();
+				}
+				else{
+					$this->load->view('login');
+				}
+
+			}
+
+
 			public function login(){
-				
 				$this->form_validation->set_rules('username','Username','required');
 				$this->form_validation->set_rules('password','Password','required[min_length=8]');
 				if($this->form_validation->run()==TRUE){
@@ -20,10 +37,13 @@
 											'account_locked'=>$account_locked
 											 ),array('attempts','=<','3'));
 					$query= $this->db->get();
-					if ($query->num_rows()>1){
-						$row = $query->result();
-						$row->attempts;
-						if(password_verify($password,$row[0]->password)){
+					if ($query->num_rows()>=1){
+						//$row = $query->result();
+						$row = $query->row();
+						$hash= $row->password;
+						//echo $row->attempts;
+
+						if(password_verify($password,$hash)){
 							$_SESSION['username'] = $username;
 							$_SESSION['profile_data']=$row;
 							$_SESSION['user_logged'] = TRUE; 
@@ -45,15 +65,14 @@
 				
 
 				}
-				echo var_dump($_POST);
 				$this->load->view('login');
 
 
 			}
 			public function logout(){
-				uset($_SESSION);
+				unset($_SESSION);
 				session_destroy();
-				redirect('/auth/login','refresh');
+				redirect('/auth/login');
 			}
 			public function registration(){
 				//if ($this->input->post('register') !== false){
@@ -101,12 +120,13 @@
 
 							$this->session->set_userdata("failed","User cannot be created at the moment! Contact the Administrator");
 							$this->session->mark_as_flash('failed');
+							//redirect('/auth/registration','refresh');
+
 						}
 
 
 
 
-						//redirect('/auth/registration','refresh');
 					}
 
 

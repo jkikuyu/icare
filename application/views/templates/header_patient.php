@@ -19,10 +19,8 @@
 	<!-- Core JS files -->
 	<script type="text/javascript" src="<?php echo base_url('assets/js/plugins/loaders/pace.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/core/libraries/jquery.min.js') ?>"></script>
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- 	<script type="text/javascript" src="<?php// echo base_url('assets/js/core/libraries/bootstrap.min.js') ?>"></script>
- -->	<script type="text/javascript" src="<?php echo base_url('assets/js/plugins/loaders/blockui.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/core/libraries/bootstrap.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/plugins/loaders/blockui.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/plugins/ui/nicescroll.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/plugins/ui/drilldown.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/plugins/ui/fab.min.js') ?>"></script>
@@ -60,14 +58,9 @@
 		$(".alert").delay(4000).slideUp(200, function() {
 		    $(this).alert('close');
 		});
+
+
 	</script>
-	 <script>
-	      		$(document).ready(function(){
-	    $("button").click(function(){
-	        $("p").hide();
-	    });
-	});
-	</script>	
 </head>
 
 <body>
@@ -88,8 +81,6 @@
 				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
 			</ul>
 
-			<p class="navbar-text"><span class="label bg-success">Online</span></p>
-
 			<ul class="nav navbar-nav navbar-right">
 
 				<li class="dropdown dropdown-user">
@@ -101,16 +92,13 @@
 
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="<?php echo site_url('home/profile'); ?>"><i class="icon-user-plus"></i> Edit Profile</a></li>
-						<li><a href="<?= site_url('home/logout') ?>"><i class="icon-switch2"></i> Logout</a></li>
+						<li><a href="<?= site_url('auth/logout') ?>"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 	</div>
 	<!-- /main navbar -->
-
-				<!-- model -->
-
 	<!-- Page container -->
 	<div class="page-container">
 

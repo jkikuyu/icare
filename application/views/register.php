@@ -11,6 +11,8 @@
     <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
  	<link href="<?php echo base_url();?>assets/css/respond.min.css" rel="stylesheet">
  	<link href="<?php echo base_url();?>assets/css/html5shiv.min.js" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,15 +23,26 @@
   </head>
   <body>
 	<div class="container"> 
+				  <!-- Modal -->
+		
+
 	    <div id="registerbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
 
 			<?php if(isset($_SESSION['success'])){?>
 				<div class= "alert alert-success"> <?php echo $_SESSION['success'];?></div>
 			<?php
+				}
+				else if(isset($_SESSION['success'])){
+			?>
+				<div class= "alert alert-danger"> <?php echo $_SESSION['failed'];?></div>
+			<?php
 			}
 		?>
+		  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
       <div class="panel panel-info" >
+
+
          <?php //echo validation_errors('<div class="alert alert-danger">','</div');?>
 
           <div class="panel-heading">
@@ -40,7 +53,25 @@
             <div style="padding-top:30px" class="panel-body" >
 			
 				<form id="registerform" role="form" action="" method="POST">
-
+				  <div class="modal" id="myModal" role="dialog">
+						    <div class="modal-dialog">
+						    
+						      <!-- Modal content-->
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">Modal Header</h4>
+						        </div>
+						        <div class="modal-body">
+						          <p>Some text in the modal.</p>
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        </div>
+						      </div>
+						      
+						    </div>
+						  </div>
 
 					<div class="form-group">
 					    <input class="form-control" name="firstname" placeholder="First name" 
