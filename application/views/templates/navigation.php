@@ -40,9 +40,9 @@
 
 								<li><a href="<?php echo site_url('home/transaction'); ?>"><i class="icon-cash"></i> <span>Transactions</span></a></li>
 
-								<li><a href="<?php echo site_url('home/prescription'); ?>"><i class="icon-cash3"></i> <span>Prescriptions</span></a>
+								<li><a href="<?php echo site_url('home/prescription'); ?>"><i class="icon-aid-kit"></i> <span>Prescriptions</span></a>
 
-								<li><a href="<?php echo site_url('home/med_reports'); ?>"><i class="icon-cash3"></i> <span>Medical Report</span></a>
+								<li><a href="<?php echo site_url('home/med_reports'); ?>"><i class="icon-file-plus"></i> <span>Medical Report</span></a>
 
 								</li>
 

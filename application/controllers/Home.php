@@ -34,7 +34,7 @@ class Home extends CI_Controller{
         $this->load->view('templates/body_header_patient', $data);
 
         $this->load->view('patient',$data);
-        $this->load->view('templates/modal');
+        $this->load->view('templates/modal_window');
 
         $this->load->view('templates/footer');
         //$this->load->view('dashboard');

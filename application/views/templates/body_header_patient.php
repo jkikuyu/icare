@@ -9,7 +9,7 @@
 						<div class="page-title">
 							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold"><?php echo $page_title?></span></h4>
 
-								<div><button type="button" style="margin-left:30px;" class="btn bg-blue-300" id="left-panel-link" data-toggle="modal" data-target="#myModal">See Doctor</button></div>
+								<div><button type="button" style="margin-left:30px;" class="btn bg-blue-300" id="left-panel-link" data-toggle="modal" data-target="#modalSeeDoc">See Doctor</button></div>
 
 						</div>
 
