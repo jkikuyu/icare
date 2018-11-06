@@ -14,21 +14,21 @@
                $d = new DateTime(date('Y-m-d H:i:s'));
                ?> 
                 <div class="form-check" id="pickdate">
-                  <input type="radio" class="form-check-input" name="groupOfMaterialRadios" value="1" checked>
+                  <input type="radio" class="form-check-input" name="dtPickerRadios" value="1" checked>
                   <label class="form-check-label">Now</label>
-                <input type="radio" class="form-check-input" name="groupOfMaterialRadios" value="2">
+                <input type="radio" class="form-check-input" name="dtPickerRadios" value="2">
                 <label class="form-check-label">Select Date</label>
 
 
                 </div>
 
 
-                <div class="input-group date form_datetime col-md-8" data-date='<?php echo $d->format('Y-m-d\TH:i:s.u');?>' data-date-format="dd MM yyyy - HH:ii p" id="dtpicker" data-link-field="dtp_input1">
-                    <input class="form-control " type="text" value="" placeholder='when' readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <div class="input-group date form_datetime col-md-8" data-date='<?php echo $d->format('Y-m-d\TH:i:s.u');?>' data-date-format="dd MM yyyy - HH:ii p" id="dtpicker" data-link-field="disabledtPicker">
+                    <input id="inputdtPicker" class="form-control " type="text" value="" placeholder='when' readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove" disabled></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th" disabled></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" /><br/>
+				<input type="hidden" id="disabledtPicker" value="" /><br/>
                 </div>
                 <div class="md-form mb-5">
                     <i class="fa fa-envelope prefix grey-text"></i>
@@ -39,19 +39,29 @@
 				    </div>
 			</div>
 			<script type="application/javascript">
+                $("#dtpicker").addClass("disabledtPicker"); //disable calendar
+                document.getElementById("inputdtPicker").value ='<?php echo $d->format('Y-m-d\TH:i:s.u');?>' ;
+                
     		    $(".form_datetime").datetimepicker({
     		        format: "dd MM yyyy - hh:ii",
                     locale: 'uk'
                     
     		    });
-                $("input[name='groupOfMaterialRadios']").change(function(e){
+                $("input[name='dtPickerRadios']").change(function(e){
                  console.log( $(this).val() );                 
                  if($(this).val() == 1) {
-                        $("#dtpicker").prop('disabled',true);
+                        $("#dtpicker").addClass("disabledtPicker");
 
                     } else {
-                        $("#dtpicker").prop('disabled',false);
+                        var element = document.getElementById("dtpicker");
+                        element.classList.remove("disabledtPicker");
                     }
 
                 });
             </script>
+            <style rel="stylesheet" type="text/css">
+                .disabledtPicker {
+                    pointer-events: none;
+                    opacity: 0.8;
+                }
+            </style>
