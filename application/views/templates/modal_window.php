@@ -23,8 +23,8 @@
                 </div>
 
 
-                <div class="input-group date form_datetime col-md-8" data-date='<?php echo $d->format('Y-m-d\TH:i:s.u');?>' data-date-format="dd MM yyyy - HH:ii p" id="dtpicker" data-link-field="disabledtPicker">
-                    <input id="inputdtPicker" class="form-control " type="text" value="" placeholder='when' readonly>
+                <div class="input-group date form_datetime col-md-8" data-date='<?php echo $d->format('j F Y - h:i');?>' data-date-format="dd MM yyyy - h:i p" id="dtpicker" data-link-field="disabledtPicker">
+                    <input id="inputdtPicker"  class="form-control " value="" placeholder='when' readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove" disabled></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th" disabled></span></span>
                 </div>
@@ -40,11 +40,11 @@
 			</div>
 			<script type="application/javascript">
                 $("#dtpicker").addClass("disabledtPicker"); //disable calendar
-                document.getElementById("inputdtPicker").value ='<?php echo $d->format('Y-m-d\TH:i:s.u');?>' ;
+                document.getElementById("inputdtPicker").value ='<?php echo $d->format('j F Y - h:i A');?>' ;
                 
     		    $(".form_datetime").datetimepicker({
-    		        format: "dd MM yyyy - hh:ii",
-                    locale: 'uk'
+                    use24hours: false,
+                    locale: 'ke'
                     
     		    });
                 $("input[name='dtPickerRadios']").change(function(e){
