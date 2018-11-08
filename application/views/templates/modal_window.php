@@ -43,9 +43,13 @@
                 document.getElementById("inputdtPicker").value ='<?php echo $d->format('j F Y - h:i A');?>' ;
                 
     		    $(".form_datetime").datetimepicker({
-                    use24hours: false,
-                    locale: 'ke'
-                    
+                    weekStart: 1,
+                    todayBtn:  1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    forceParse: 0,
+                    showMeridian: 1                    
     		    });
                 $("input[name='dtPickerRadios']").change(function(e){
                  console.log( $(this).val() );                 
