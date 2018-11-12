@@ -1,7 +1,6 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Home extends CI_Controller{
-
 	public function __construct(){
 		parent::__construct();
 /*		$this->load->helper('url');
@@ -10,7 +9,7 @@ class Home extends CI_Controller{
         $this->db = $this->load->database('default', true);
 
         $this->load->model('home_model');
-
+        
 
 	}
 	public function dash(){
@@ -26,7 +25,6 @@ class Home extends CI_Controller{
 */       $breadcrumb          = array();
 
         $page_title          = "Dashboard";
-        
         $data['breadcrumb']  = $breadcrumb;
         $data['page_title']  = $page_title;
         $this->load->view('templates/header_patient');

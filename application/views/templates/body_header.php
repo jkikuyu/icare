@@ -5,7 +5,6 @@
 				<div class="page-header">
 					<div class="page-header-content">
 
-
 						<div class="page-title">
 							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold"><?php echo $page_title?></span></h4>
 
