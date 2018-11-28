@@ -1,8 +1,8 @@
 <div class="modal fade" id="modalSeeDoc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Save</h4>
+                <div class="modal-header text-center panel-heading">
+                    <h4 class="modal-title w-100 font-weight-bold">Appointment</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -36,7 +36,7 @@
                                 $data = getenv('MEDTYPE');
                                 $med = json_decode($data,true);
                                 foreach ($med as $key => $value) {
-                                    echo '<option value=$key>'.$value.'</option>';
+                                    echo '<option value='.$key.'>'.$value.'</option>';
                                 }
 
 
@@ -45,11 +45,42 @@
                     </div>
                  </div>
                   <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn btn-default">submit</button>
+                    <button id="btnSchedule" class="btn btn-default  close-exit-modal">submit</button>
                   </div>                
             </div>
         </div>
         <script type="application/javascript">
+            
+        $("#btnSchedule").click(function() {
+            var pickdate = $('#inputdtPicker').val();
+            var medtype=$('#medtype').val();
+            $.post("home/schedule", {'pickdate': 'test'}, function(xhr, status, error) {
+               // we're fine here
+            }).fail(function(xhr, status, error) {
+                  //alert(status);               
+                  //alert(status);               
+                   var err = eval("(" + xhr.responseText + ")");
+                  alert(err.Message);           
+            });
+/*
+           $.ajax({    
+            url:'/home/schedule',
+            type: 'post',
+            data: {"pickdate":pickdate},
+            success: function(data) {
+            alert('test');
+            },
+            error(function(){
+                alert('error');
+            });
+            });         
+*/
+                //type:'POST',
+                //url:'home/schedule'
+                //data:'pickdate='+pickdate+'&medtype='+medtype
+            });
+           
+        
             $("#dtpicker").addClass("disabledtPicker"); //disable calendar
             document.getElementById("inputdtPicker").value ='<?php echo $d->format('j F Y - h:i A');?>' ;
 

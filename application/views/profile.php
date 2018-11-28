@@ -22,11 +22,7 @@
                 <input type="text" name="fname" value="<?php echo $profile_data['first_name']; ?>" class="form-control">
               </div>
               <div class="col-md-4">
-                <label>Surname</label>
-                <input type="text" name="sname" value="<?php echo $profile_data['surname']; ?>" class="form-control">
-              </div>
-              <div class="col-md-4">
-                <label>Middle Name</label>
+                <label>Middle   Name</label>
                 <input type="text" name="lname" value="<?php echo $profile_data['last_name']; ?>" class="form-control">
               </div>
             </div>
@@ -35,12 +31,8 @@
           <div class="form-group">
             <div class="row">
               <div class="col-md-4">
-                <label>KRA PIN</label>
-                <input type="text" name="kra" value="<?php echo $profile_data['kra']; ?>" class="form-control">
-              </div>
-              <div class="col-md-4">
                 <label>ID Number</label>
-                <input type="text" name="id_number" readonly="readonly" value="<?php echo $profile_data['id_number']; ?>" class="form-control">
+                <input type="text" name="id_number"  value="<?php echo $profile_data['id_number']; ?>" class="form-control">
               </div>
               <div class="col-md-4">
                 <label>Email Address</label>

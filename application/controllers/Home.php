@@ -93,7 +93,14 @@ class Home extends CI_Controller{
         $this->load->view('templates/body_header', $data);
         $this->load->view('profile', $data);
         $this->load->view('templates/footer');
-}
+    }
+    public function schedule(){
+        echo "test";
+        //$appointment = $_POST['pickdate'];
+        //$medtype = $_POST['medtype'];
+        echo 'appointment'.$appointment;
+
+    }
 
 }
 

@@ -12,7 +12,7 @@
                             $data = getenv('MEDTYPE');
                             $a = json_decode($data,true);
                             //$mess =(array)json_decode(getenv('MEDTYPE'),true);
-                          var_dump($a); 
+                          //var_dump($a); 
                             
                             
                             ?>

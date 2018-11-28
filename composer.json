@@ -12,7 +12,11 @@
 	},
 	"require": {
 		"php": ">=5.2.4",
-		"vlucas/phpdotenv": "^2.5"
+		"vlucas/phpdotenv": "^2.5",
+ 		"cboden/ratchet": "0.4.*", 
+		"react/zmq": "0.2.*|0.3.*"
+
+
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
